@@ -1,2 +1,612 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+
+using System.ComponentModel;
+using System.Runtime.InteropServices;
+using System;
+using System.Security.Cryptography;
+using static System.Net.Mime.MediaTypeNames;
+using System.Diagnostics;
+using Microsoft.VisualBasic;
+using System.Diagnostics.Metrics;
+using System.Text.RegularExpressions;
+using System.Numerics;
+using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Reflection.Metadata;
+using System.Reflection;
+using System.Runtime.Intrinsics.X86;
+using System.Security.Cryptography.X509Certificates;
+
+
+Console.WriteLine("Welcome to the Poetry Assitance Terminal.\r\nYou may call me P.A.T.");
+Console.WriteLine("\r\nWhen you are ready, Press Enter.");
+Console.ReadKey();
+var lowerBound = 0;
+var upperBound = 18;
+var rngNum = RandomNumberGenerator.GetInt32(lowerBound, upperBound);//this is returning a number from 0-17
+switch (rngNum)
+{
+    case 0://God's Grandeur
+        string godOne = "The world is charged with the grandeur of God." +
+        "\r\nIt will flame out, like shining from shook foil;" +
+        "\r\nIt gathers to a greatness, like the ooze of oil" +
+        "\r\nCrushed.Why do men then now not reck his rod?" +
+        "\r\nGenerations have trod, have trod, have trod;" +
+        "\r\nAnd all is seared with trade; bleared, smeared with toil;" +
+        "\r\nAnd wears man's smudge and shares man's smell: the soil" +
+        "\r\nIs bare now, nor can foot feel, being shod.";
+
+        string godTwo = "\r\nAnd for all this, nature is never spent;" +
+        "\r\nThere lives the dearest freshness deep down things;" +
+        "\r\nAnd though the last lights off the black West went" +
+        "\r\nOh, morning, at the brown brink eastward, springs —" +
+        "\r\nBecause the Holy Ghost over the bent" +
+        "\r\nWorld broods with warm breast and with ah! bright wings.";
+
+        Console.WriteLine("God's Grandeur by Gerard Manly Hopkins");
+        Console.ReadKey();
+        Console.WriteLine(godOne);
+        Console.ReadKey();
+        Console.WriteLine(godTwo);
+        Console.ReadKey();
+        break;
+
+    case 1://On First Looking
+        string chapmanOne = "\r\nMuch have I travell'd in the realms of gold," +
+        "\r\nAnd many goodly states and kingdoms seen;" +
+        "\r\nRound many western islands have I been" +
+        "\r\nWhich bards in fealty to Apollo hold.";
+        
+        string chapmanTwo = "\r\nOft of one wide expanse had I been told" +
+        "\r\nThat deep - brow'd Homer ruled as his demesne;" +
+        "\r\nYet did I never breathe its pure serene" +
+        "\r\nTill I heard Chapman speak out loud and bold:";
+        
+        string chapmanThree = "\r\nThen felt I like some watcher of the skies" +
+        "\r\nWhen a new planet swims into his ken;" +
+        "\r\nOr like stout Cortez when with eagle eyes" +
+        "\r\nHe star'd at the Pacific—and all his men" +
+        "\r\nLook'd at each other with a wild surmise—" +
+        "\r\nSilent, upon a peak in Darien.";
+
+        Console.WriteLine("On First Looking Into Chapman's Homer by John Keats");
+        Console.ReadKey();
+        Console.WriteLine(chapmanOne);
+        Console.ReadKey();
+        Console.WriteLine(chapmanTwo);
+        Console.ReadKey();
+        Console.WriteLine(chapmanThree);
+        Console.ReadKey();
+        break;
+
+    case 2://The World Is Too Much
+        string worldOne = "\r\nThe world is too much with us; late and soon," +
+        "\r\nGetting and spending, we lay waste our powers;—" +
+        "\r\nLittle we see in Nature that is ours;" +
+        "\r\nWe have given our hearts away, a sordid boon!";
+
+        string worldTwo = "\r\nThis Sea that bares her bosom to the moon;" +
+        "\r\nThe winds that will be howling at all hours," +
+        "\r\nAnd are up - gathered now like sleeping flowers;" +
+        "\r\nFor this, for everything, we are out of tune;" +
+        "\r\nIt moves us not.Great God! I’d rather be" +
+        "\r\nA Pagan suckled in a creed outworn;";
+
+        string worldThree = "\r\nSo might I, standing on this pleasant lea," +
+        "\r\nHave glimpses that would make me less forlorn;" +
+        "\r\nHave sight of Proteus rising from the sea;" +
+        "\r\nOr hear old Triton blow his wreathèd horn.";
+
+        Console.WriteLine("The World Is Too Much With Us by William Wordsworth");
+        Console.ReadKey();
+        Console.WriteLine(worldOne);
+        Console.ReadKey();
+        Console.WriteLine(worldTwo);
+        Console.ReadKey();
+        Console.WriteLine(worldThree);
+        Console.ReadKey();
+        break;
+
+    case 3://To an Athlete
+
+        string athleteOne = "\r\nThe time you won your town the race" +
+        "\r\nWe chaired you through the market - place;" +
+        "\r\nMan and boy stood cheering by," +
+        "\r\nAnd home we brought you shoulder - high.";
+
+        string athleteTwo = "\r\nToday, the road all runners come," +
+            "\r\nShoulder-high we bring you home," +
+            "\r\nAnd set you at your threshold down," +
+            "\r\nTownsman of a stiller town.";
+
+        string athleteThree = "\r\nSmart lad, to slip betimes away" +
+            "\r\nFrom fields where glory does not stay," +
+            "\r\nAnd early though the laurel grows" +
+            "\r\nIt withers quicker than the rose.";
+
+        string athleteFour = "\r\nEyes the shady night has shut" +
+            "\r\nCannot see the record cut," +
+            "\r\nAnd silence sounds no worse than cheers" +
+            "\r\nAfter earth has stopped the ears.";
+
+        string athleteFive = "\r\nNow you will not swell the rout" +
+            "\r\nOf lads that wore their honours out," +
+            "\r\nRunners whom renown outran" +
+            "\r\nAnd the name died before the man.";
+
+        string athleteSix = "\r\nSo set, before its echoes fade," +
+            "\r\nThe fleet foot on the sill of shade," +
+            "\r\nAnd hold to the low lintel up" +
+            "\r\nThe still-defended challenge-cup.";
+
+        string athleteSeven = "\r\nAnd round that early-laurelled head" +
+            "\r\nWill flock to gaze the strengthless dead," +
+            "\r\nAnd find unwithered on its curls" +
+            "\r\nThe garland briefer than a girl’s.";
+
+        Console.WriteLine("To an Athlete Dying Young by A.E.Housman");
+        Console.ReadKey();
+        Console.WriteLine(athleteOne);
+        Console.ReadKey();
+        Console.WriteLine(athleteTwo);
+        Console.ReadKey();
+        Console.WriteLine(athleteThree);
+        Console.ReadKey();
+        Console.WriteLine(athleteFour);
+        Console.ReadKey();
+        Console.WriteLine(athleteFive);
+        Console.ReadKey();
+        Console.WriteLine(athleteSix);
+        Console.ReadKey();
+        Console.WriteLine(athleteSeven);
+        Console.ReadKey();
+        break;
+
+    case 4://Stopping by the Woods
+        string woodsOne = "\r\nWhose woods these are I think I know." +
+            "\r\nHis house is in the village though;" +
+            "\r\nHe will not see me stopping here" +
+            "\r\nTo watch his woods fill up with snow.";
+
+        string woodsTwo = "\r\nMy little horse must think it queer" +
+            "\r\nTo stop without a farmhouse near" +
+            "\r\nBetween the woods and frozen lake" +
+            "\r\nThe darkest evening of the year.";
+
+        string woodsThree = "\r\nHe gives his harness bells a shake" +
+            "\r\nTo ask if there is some mistake." +
+            "\r\nThe only other sound’s the sweep" +
+            "\r\nOf easy wind and downy flake.";
+
+        string woodsFour = "\r\nThe woods are lovely, dark and deep," +
+            "\r\nBut I have promises to keep," +
+            "\r\nAnd miles to go before I sleep," +
+            "\r\nAnd miles to go before I sleep.";
+
+        Console.WriteLine("Stopping by the Woods on a Snowy Evening by Robert Frost");
+        Console.ReadKey();
+        Console.WriteLine(woodsOne);
+        Console.ReadKey();
+        Console.WriteLine(woodsTwo);
+        Console.ReadKey();
+        Console.WriteLine(woodsThree);
+        Console.ReadKey();
+        Console.WriteLine(woodsFour);
+        Console.ReadKey();
+        break;
+
+    case 5://Sonnet 116
+        string sonnetOne = "\r\nLet me not to the marriage of true minds" +
+            "\r\nAdmit impediments; love is not love" +
+            "\r\nWhich alters when it alteration finds," +
+            "\r\nOr bends with the remover to remove.";
+
+        string sonnetTwo = "\r\nO no, it is an ever-fixèd mark" +
+            "\r\nThat looks on tempests and is never shaken;" +
+            "\r\nIt is the star to every wand'ring bark" +
+            "\r\nWhose worth's unknown, although his height be taken.";
+
+        string sonnetThree = "\r\nLove's not time's fool, though rosy lips and cheeks" +
+            "\r\nWithin his bending sickle's compass come." +
+            "\r\nLove alters not with his brief hours and weeks," +
+            "\r\nBut bears it out even to the edge of doom:";
+
+        string sonnetFour = "\r\nIf this be error and upon me proved," +
+            "\r\nI never writ, nor no man ever loved.";
+
+        Console.WriteLine("Sonnet 116 by William Shakespeare");
+        Console.ReadKey();
+        Console.WriteLine(sonnetOne);
+        Console.ReadKey();
+        Console.WriteLine(sonnetTwo);
+        Console.ReadKey();
+        Console.WriteLine(sonnetThree);
+        Console.ReadKey();
+        break;
+
+    case 6://What a Piece of Work
+        string workOne = "\r\nWhat a piece of work is a man! How noble in reason!" +
+            "\r\nHow infinite in faculty! in form and moving how express and admirable!" +
+            "\r\nIn action how like an angel! in apprehension how like a god!" +
+            "\r\nThe beauty of the world! The paragon of animals!" +
+            "\r\nAnd yet, to me, what is this quintessence of dust?" +
+            "\r\nMan delights not me: no, nor woman neither, though by your" +
+            "\r\nsmiling you seem to say so.";
+
+        Console.WriteLine("What a Piece of Work is Man by William Shakespeare");
+        Console.ReadKey();
+        Console.WriteLine(workOne);
+        Console.ReadKey();
+        break;
+
+    case 7://Spring and Fall
+        string springOne = "\r\nMárgarét, áre you gríeving" +
+            "\r\nOver Goldengrove unleaving?" +
+            "\r\nLeáves like the things of man, you" +
+            "\r\nWith your fresh thoughts care for, can you?";
+
+        string springTwo = "\r\nAh! ás the heart grows older" +
+            "\r\nIt will come to such sights colder" +
+            "\r\nBy and by, nor spare a sigh" +
+            "\r\nThough worlds of wanwood leafmeal lie;" +
+            "\r\nAnd yet you wíll weep and know why.";
+
+        string springThree = "\r\nNow no matter, child, the name:" +
+            "\r\nSórrow’s spríngs áre the same." +
+            "\r\nNor mouth had, no nor mind, expressed" +
+            "\r\nWhat heart heard of, ghost guessed:" +
+            "\r\nIt ís the blight man was born for," +
+            "\r\nIt is Margaret you mourn for.";
+
+        Console.WriteLine("Spring and Fall by Gerard Manly Hopkins");
+        Console.ReadKey();
+        Console.WriteLine(springOne);
+        Console.ReadKey();
+        Console.WriteLine(springTwo);
+        Console.ReadKey();
+        Console.WriteLine(springThree);
+        Console.ReadKey();
+        break;
+    case 8://Ozymandias
+        string ozyOne = "I met a traveller from an antique land," +
+            "\r\nWho said—“Two vast and trunkless legs of stone" +
+            "\r\nStand in the desert. . . . Near them, on the sand," +
+            "\r\nHalf sunk a shattered visage lies, whose frown," +
+            "\r\nAnd wrinkled lip, and sneer of cold command," +
+            "\r\nTell that its sculptor well those passions read" +
+            "\r\nWhich yet survive, stamped on these lifeless things," +
+            "\r\nThe hand that mocked them, and the heart that fed;";
+            
+        string ozyTwo = "\r\nAnd on the pedestal, these words appear:" +
+            "\r\nMy name is Ozymandias, King of Kings;" +
+            "\r\nLook on my Works, ye Mighty, and despair!" +
+            "\r\nNothing beside remains. Round the decay" +
+            "\r\nOf that colossal Wreck, boundless and bare" +
+            "\r\nThe lone and level sands stretch far away.";
+
+        Console.WriteLine("Ozymandias by Percy Shelly");
+        Console.ReadKey();
+        Console.WriteLine(ozyOne);
+        Console.ReadKey();
+        Console.WriteLine(ozyTwo);
+        Console.ReadKey();
+        break;
+
+    case 9://Pied Beauty
+
+        string piedOne = "\r\nGlory be to God for dappled things –" +
+            "\r\n   For skies of couple-colour as a brinded cow;" +
+            "\r\n      For rose-moles all in stipple upon trout that swim;" +
+            "\r\nFresh-firecoal chestnut-falls; finches’ wings;" +
+            "\r\n   Landscape plotted and pieced – fold, fallow, and plough;" +
+            "\r\n      And áll trádes, their gear and tackle and trim.";
+
+        string piedTwo = "All things counter, original, spare, strange;" +
+            "\r\n   Whatever is fickle, freckled (who knows how?)" +
+            "\r\n      With swift, slow; sweet, sour; adazzle, dim;" +
+            "\r\nHe fathers-forth whose beauty is past change:" +
+            "\r\n                                Praise him.";
+
+        Console.WriteLine("Pied Beauty by Gerard Manly Hopkins");
+        Console.ReadKey();
+        Console.WriteLine(piedOne);
+        Console.ReadKey();
+        Console.WriteLine(piedTwo);
+        Console.ReadKey();
+        break;
+
+    case 10://To Lucasta
+        string lucastaOne = "\r\nTell me not (Sweet) I am unkind," +
+            "\r\n         That from the nunnery" +
+            "\r\nOf thy chaste breast and quiet mind" +
+            "\r\n         To war and arms I fly.";
+
+        string lucastaTwo = "\r\nTrue, a new mistress now I chase," +
+            "\r\n         The first foe in the field;" +
+            "\r\nAnd with a stronger faith embrace" +
+            "\r\n         A sword, a horse, a shield.";
+
+        string lucastaThree = "\r\nYet this inconstancy is such" +
+            "\r\n         As you too shall adore;" +
+            "\r\nI could not love thee (Dear) so much," +
+            "\r\n         Lov’d I not Honour more.";
+
+        Console.WriteLine("To Lucasta by Richard Lovelace");
+        Console.ReadKey();
+        Console.WriteLine(lucastaOne);
+        Console.ReadKey();
+        Console.WriteLine(lucastaTwo);
+        Console.ReadKey();
+        Console.WriteLine(lucastaThree);
+        Console.ReadKey();
+        break;
+
+    case 11://Love (III)
+        string loveOne = "\r\nLove bade me welcome. Yet my soul drew back" +
+            "\r\n                              Guilty of dust and sin." +
+            "\r\nBut quick-eyed Love, observing me grow slack" +
+            "\r\n                             From my first entrance in," +
+            "\r\nDrew nearer to me, sweetly questioning," +
+            "\r\n                             If I lacked any thing.";
+
+        string loveTwo = "A guest, I answered, worthy to be here:" +
+            "\r\n                             Love said, You shall be he." +
+            "\r\nI the unkind, ungrateful? Ah my dear," +
+            "\r\n                             I cannot look on thee." +
+            "\r\nLove took my hand, and smiling did reply," +
+            "\r\n                             Who made the eyes but I?";
+
+        string loveThree = "Truth Lord, but I have marred them: let my shame" +
+            "\r\n                             Go where it doth deserve." +
+            "\r\nAnd know you not, says Love, who bore the blame?" +
+            "\r\n                             My dear, then I will serve." +
+            "\r\nYou must sit down, says Love, and taste my meat:" +
+            "\r\n                             So I did sit and eat.";
+
+        Console.WriteLine("Love (III) by George Herbert");
+        Console.ReadKey();
+        Console.WriteLine(loveOne);
+        Console.ReadKey();
+        Console.WriteLine(loveTwo);
+        Console.ReadKey();
+        Console.WriteLine(loveThree);
+        Console.ReadKey();
+        break;
+    case 12://Batter My Heart
+
+        string batterOne = "Batter my heart, three-person'd God, for you" +
+            "\r\nAs yet but knock, breathe, shine, and seek to mend;" +
+            "\r\nThat I may rise and stand, o'erthrow me, and bend" +
+            "\r\nYour force to break, blow, burn, and make me new.";
+
+        string batterTwo = "\r\nI, like an usurp'd town to another due," +
+            "\r\nLabor to admit you, but oh, to no end;" +
+            "\r\nReason, your viceroy in me, me should defend," +
+            "\r\nBut is captiv'd, and proves weak or untrue.";
+
+        string batterThree = "\r\nYet dearly I love you, and would be lov'd fain," +
+            "\r\nBut am betroth'd unto your enemy;" +
+            "\r\nDivorce me, untie or break that knot again,";
+
+        string batterFour =  "\r\nTake me to you, imprison me, for I," +
+            "\r\nExcept you enthrall me, never shall be free," +
+            "\r\nNor ever chaste, except you ravish me."; 
+
+        Console.WriteLine("Batter My Heart by John Donne");
+        Console.ReadKey();
+        Console.WriteLine(batterOne);
+        Console.ReadKey();
+        Console.WriteLine(batterTwo);
+        Console.ReadKey();
+        Console.WriteLine(batterThree);
+        Console.ReadKey();
+        Console.WriteLine(batterFour);
+        Console.ReadKey();
+        break;
+
+    case 13://The Quality of Mercy
+        string mercyOne = "The quality of mercy is not strained;" +
+            "\r\nIt droppeth as the gentle rain from heaven" +
+            "\r\nUpon the place beneath. It is twice blest;" +
+            "\r\nIt blesseth him that gives and him that takes:" +
+            "\r\n'T is mightiest in the mightiest; it becomes" +
+            "\r\nThe throned monarch better than his crown:";
+
+        string mercyTwo = "\r\nHis sceptre shows the force of temporal power," +
+            "\r\nThe attribute to awe and majesty," +
+            "\r\nWherein doth sit the dread and fear of kings;" +
+            "\r\nBut mercy is above this sceptred sway;" +
+            "\r\nIt is enthronèd in the hearts of kings," +
+            "\r\nIt is an attribute to God himself;";
+
+        string mercyThree = "\r\nAnd earthly power doth then show likest God's" +
+            "\r\nWhen mercy seasons justice. Therefore, Jew," +
+            "\r\nThough justice be thy plea, consider this," +
+            "\r\nThat, in the course of justice, none of us" +
+            "\r\nShould see salvation: we do pray for mercy;" +
+            "\r\nAnd that same prayer doth teach us all to render" +
+            "\r\nThe deeds of mercy.";
+
+        Console.WriteLine("The Quality of Mercy Is Not Strained by William Shakespeare");
+        Console.ReadKey();
+        Console.WriteLine(mercyOne);
+        Console.ReadKey();
+        Console.WriteLine(mercyTwo);
+        Console.ReadKey();
+        Console.WriteLine(mercyThree);
+        Console.ReadKey();
+        break;
+
+    case 14://Prologue
+
+        string prologueOne = "Whan that Aprille with his shoures soote," +
+            "\r\nThe droghte of March hath perced to the roote," +
+            "\r\nAnd bathed every veyne in swich licóur" +
+            "\r\nOf which vertú engendred is the flour;";
+           
+        string prologueTwo = "\r\nWhan Zephirus eek with his swete breeth" +
+            "\r\nInspired hath in every holt and heeth" +
+            "\r\nThe tendre croppes, and the yonge sonne" +
+            "\r\nHath in the Ram his halfe cours y-ronne," +
+            "\r\nAnd smale foweles maken melodye," +
+            "\r\nThat slepen al the nyght with open ye," +
+            "\r\nSo priketh hem Natúre in hir corages,";
+
+        string prologueThree = "\r\nThanne longen folk to goon on pilgrimages," +
+            "\r\nAnd palmeres for to seken straunge strondes," +
+            "\r\nTo ferne halwes, kowthe in sondry londes;" +
+            "\r\nAnd specially, from every shires ende";
+           
+        string prologueFour = "\r\nOf Engelond, to Caunterbury they wende," +
+            "\r\nThe hooly blisful martir for to seke," +
+            "\r\nThat hem hath holpen whan that they were seeke.\r\n";
+
+        Console.WriteLine("The Canturbury Tales Prologue by Chaucer");
+        Console.ReadKey();
+        Console.WriteLine(prologueOne);
+        Console.ReadKey(); 
+        Console.WriteLine(prologueTwo); 
+        Console.ReadKey();
+        Console.WriteLine(prologueThree);
+        Console.ReadKey();
+        Console.WriteLine(prologueFour);
+        Console.ReadKey();
+        break;
+
+    case 15://Sonnet 94
+
+        string billOne = "They that have power to hurt and will do none," +
+            "\r\nThat do not do the thing they most do show," +
+            "\r\nWho, moving others, are themselves as stone," +
+            "\r\nUnmoved, cold, and to temptation slow:" +
+            "\r\nThey rightly do inherit heaven's graces" +
+            "\r\nAnd husband nature's riches from expense;";
+
+        string billTwo = "\r\nThey are the lords and owners of their faces," +
+            "\r\nOthers but stewards of their excellence." +
+            "\r\nThe summer's flower is to the summer sweet" +
+            "\r\nThough to itself it only live and die," +
+            "\r\nBut if that flower with base infection meet,";
+           
+        string billThree = "\r\nThe basest weed outbraves his dignity:" +
+            "\r\nFor sweetest things turn sourest by their deeds;" +
+            "\r\nLilies that fester smell far worse than weeds.";
+
+        Console.WriteLine("Sonnet 94 by William Shakespeare");
+        Console.ReadKey();
+        Console.WriteLine(billOne);
+        Console.ReadKey();
+        Console.WriteLine(billTwo);
+        Console.ReadKey();
+        Console.WriteLine(billThree);
+        Console.ReadKey();
+        break;
+
+    case 16://For Once Then, Something
+        string somethingOne = "Others taunt me with having knelt at well-curbs" +
+        "\r\nAlways wrong to the light, so never seeing" +
+        "\r\nDeeper down in the well than where the water" +
+        "\r\nGives me back in a shining surface picture" +
+        "\r\nMe myself in the summer heaven godlike" +
+        "\r\nLooking out of a wreath of fern and cloud puffs.";
+       
+        string somethingTwo = "\r\nOnce, when trying with chin against a well - curb,"+
+        "\r\nI discerned, as I thought, beyond the picture,"+
+        "\r\nThrough the picture, a something white, uncertain,"+
+        "\r\nSomething more of the depths—and then I lost it."+
+        "\r\nWater came to rebuke the too clear water.";
+       
+        string somethingThree = "\r\nOne drop fell from a fern, and lo, a ripple"+
+        "\r\nShook whatever it was lay there at bottom,"+
+        "\r\nBlurred it, blotted it out. What was that whiteness?"+
+        "\r\nTruth? A pebble of quartz? For once, then, something.";
+
+        Console.WriteLine("For Once Then, Something by Robert Frost");
+        Console.ReadKey();
+        Console.WriteLine(somethingOne);
+        Console.ReadKey();
+        Console.WriteLine(somethingTwo);
+        Console.ReadKey();
+        Console.WriteLine(somethingThree);
+        break;
+    case 17://The Tyger
+        string tygreOne = "Tyger Tyger, burning bright," +
+        "\r\nIn the forests of the night; " +
+        "\r\nWhat immortal hand or eye, " +
+        "\r\nCould frame thy fearful symmetry?";
+        string tygreTwo = "\r\n\r\nIn what distant deeps or skies." +
+        " \r\nBurnt the fire of thine eyes?" +
+        "\r\nOn what wings dare he aspire?" +
+        "\r\nWhat the hand, dare seize the fire?";
+
+        string tygreThree = "\r\n\r\nAnd what shoulder, & what art," +
+        "\r\nCould twist the sinews of thy heart?" +
+        "\r\nAnd when thy heart began to beat." +
+        "\r\nWhat dread hand? & what dread feet?";
+
+        string tygreFour = "\r\n\r\nWhat the hammer? what the chain," +
+        "\r\nIn what furnace was thy brain?" +
+        "\r\nWhat the anvil? what dread grasp." +
+        "\r\nDare its deadly terrors clasp?";
+
+        string tygreFive = "\r\n\r\nWhen the stars threw down their spears " +
+        "\r\nAnd water'd heaven with their tears:" +
+        "\r\nDid he smile his work to see?" +
+        "\r\nDid he who made the Lamb make thee?";
+
+        string tygreSix = "\r\n\r\nTyger Tyger burning bright," +
+        "\r\nIn the forests of the night:" +
+        "\r\nWhat immortal hand or eye," +
+        "\r\nDare frame thy fearful symmetry?";
+
+        Console.WriteLine("The Tyger by William Blake");
+        Console.ReadKey();
+        Console.WriteLine(tygreOne);
+        Console.ReadKey();
+        Console.WriteLine(tygreTwo);
+        Console.ReadKey();
+        Console.WriteLine(tygreThree);
+        Console.ReadKey();
+        Console.WriteLine(tygreFour);
+        Console.ReadKey();
+        Console.WriteLine(tygreFive);
+        Console.ReadKey();
+        Console.WriteLine(tygreSix);
+        Console.ReadKey();
+        break;
+    case 18:
+        string innisfreeOne = "I will arise and go now, and go to Innisfree," +
+        "\r\nAnd a small cabin build there, of clay and wattles made;" +
+        "\r\nNine bean-rows will I have there, a hive for the honey-bee," +
+        "\r\nAnd live alone in the bee-loud glade.";
+
+        string innisfreeTwo = "\r\n\r\nAnd I shall have some peace there, for peace comes dropping slow," +
+            "\r\nDropping from the veils of the morning to where the cricket sings;" +
+            "\r\nThere midnight’s all a glimmer, and noon a purple glow," +
+            "\r\nAnd evening full of the linnet’s wings.";
+
+        string innisfreeThree = "\r\n\r\nI will arise and go now, for always night and day" +
+            "\r\nI hear lake water lapping with low sounds by the shore;" +
+            "\r\nWhile I stand on the roadway, or on the pavements grey," +
+            "\r\nI hear it in the deep heart’s core.";
+
+        Console.WriteLine("The Lake Isle of Innisfree by William Butler Yeats");
+        Console.ReadKey();
+        Console.WriteLine(innisfreeOne);
+        Console.ReadKey();
+        Console.WriteLine(innisfreeTwo);
+        Console.ReadKey();
+        Console.WriteLine(innisfreeThree);
+        Console.ReadKey();
+        //foreach
+        break;
+}
+
+
+
+   
+
+
+
